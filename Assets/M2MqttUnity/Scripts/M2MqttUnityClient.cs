@@ -176,6 +176,7 @@ namespace M2MqttUnity
         /// </summary>
         protected virtual void Start()
         {
+            Debug.Log("M2MQTT active? " + gameObject.activeInHierarchy);
             if (autoConnect)
             {
                 Connect();
