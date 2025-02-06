@@ -50,11 +50,6 @@ public class controller : MonoBehaviour
         {
             wheels[i].motorTorque = -iM.vertical * torque;
         }
-
-        for (int i = 0; i < wheels.Length - 2; i++)
-        {
-            wheels[i].steerAngle = iM.horizontal * steerPower;
-        }
     }
 
     private void applyDownForce()
@@ -67,5 +62,6 @@ public class controller : MonoBehaviour
 
         moveVehicle();
         steerVehicle();
+        applyDownForce();
     }
 }
