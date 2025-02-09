@@ -30,6 +30,8 @@ using UnityEngine.UI;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using M2MqttUnity;
+using UnityEditor.VersionControl;
+using System.Linq.Expressions;
 
 /// <summary>
 /// Examples for the M2MQTT library (https://github.com/eclipse/paho.mqtt.m2mqtt),
@@ -55,11 +57,13 @@ namespace M2MqttUnity.Examples
 
         private List<string> eventMessages = new List<string>();
         private bool updateUI = false;
+        
 
-        public void TestPublish()
+        public void TestPublish(string message)
         {
-            client.Publish("M2MQTT_Unity/test", System.Text.Encoding.UTF8.GetBytes("33"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            Debug.Log("Test message published");
+            //TODO: PUSBLISHA IL TESTO CHECKPOINT
+            client.Publish("checkpoint", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            Debug.Log(message +  "published");
             AddUiMessage("Test message published.");
         }
 
@@ -116,18 +120,18 @@ namespace M2MqttUnity.Examples
 
             if (autoTest)
             {
-                TestPublish();
+                TestPublish("Got connection");
             }
         }
 
         protected override void SubscribeTopics()
         {
-            client.Subscribe(new string[] { "M2MQTT_Unity/test" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "checkpoint" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
         }
 
         protected override void UnsubscribeTopics()
         {
-            client.Unsubscribe(new string[] { "M2MQTT_Unity/test" });
+            client.Unsubscribe(new string[] { "checkpoint" });
         }
 
         protected override void OnConnectionFailed(string errorMessage)
