@@ -5,6 +5,9 @@ using UnityEngine;
 public class CheckpointSingle : MonoBehaviour
 {
 
+    public string gravit‡Curva;
+    public bool applyFreno;
+
     private TrackCheckpoints trackCheckpoints;
     private void OnTriggerEnter(Collider other)
     {

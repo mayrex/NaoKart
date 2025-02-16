@@ -155,7 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &176131863
 MonoBehaviour:
@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Stretta
+  applyFreno: 1
 --- !u!65 &176131864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246,7 +248,7 @@ GameObject:
   - component: {fileID: 219767827}
   - component: {fileID: 219767826}
   m_Layer: 0
-  m_Name: Curva2
+  m_Name: Curva3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +267,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &219767826
 MonoBehaviour:
@@ -279,6 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Lunga
+  applyFreno: 0
 --- !u!65 &219767827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -371,8 +375,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1801228989}
-  - {fileID: 219767825}
+  - {fileID: 1066387055}
   - {fileID: 1149766158}
+  - {fileID: 219767825}
   - {fileID: 176131862}
   - {fileID: 583839454}
   - {fileID: 548224675}
@@ -514,7 +519,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -148.169, z: 0}
 --- !u!114 &548224676
 MonoBehaviour:
@@ -528,6 +533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Stretta
+  applyFreno: 0
 --- !u!65 &548224677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -624,7 +631,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &583839455
 MonoBehaviour:
@@ -638,6 +645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Tornanti
+  applyFreno: 1
 --- !u!65 &583839456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -762,7 +771,120 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98f8ec4b27b5c24a817f0c955941d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  record: {fileID: 2753548986879394236}
   mqtt: {fileID: 6207513534042836372}
+--- !u!1 &1066387054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066387055}
+  - component: {fileID: 1066387059}
+  - component: {fileID: 1066387058}
+  - component: {fileID: 1066387057}
+  - component: {fileID: 1066387056}
+  m_Layer: 0
+  m_Name: Curva1 EXIT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066387055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066387054}
+  m_LocalRotation: {x: 0, y: -0.27790153, z: 0, w: 0.96060956}
+  m_LocalPosition: {x: 113.13, y: 1.923, z: -56.18}
+  m_LocalScale: {x: 1, y: 3.8659, z: 14.159127}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 339355618}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -32.27, z: 0}
+--- !u!114 &1066387056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066387054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "gravit\xE0Curva": 
+  applyFreno: 0
+--- !u!65 &1066387057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066387054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1066387058
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066387054}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4e49d93789e1e0a4cadaaa20fcb44815, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1066387059
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066387054}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1149766157
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +899,7 @@ GameObject:
   - component: {fileID: 1149766160}
   - component: {fileID: 1149766159}
   m_Layer: 0
-  m_Name: Curva3
+  m_Name: Curva2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,6 +932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Larga
+  applyFreno: 0
 --- !u!65 &1149766160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1040,7 +1164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1588516545
 MonoBehaviour:
@@ -1054,6 +1178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Lunga
+  applyFreno: 0
 --- !u!65 &1588516546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1193,7 +1319,7 @@ GameObject:
   - component: {fileID: 1801228986}
   - component: {fileID: 1801228990}
   m_Layer: 0
-  m_Name: Curva1
+  m_Name: Curva1 ENTRY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1270,7 +1396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801228985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 97.36, y: 1.923, z: -28.0811}
+  m_LocalPosition: {x: 77.83, y: 1.923, z: -28.0811}
   m_LocalScale: {x: 1, y: 3.8659, z: 14.159127}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1289,6 +1415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": Strettissima
+  applyFreno: 1
 --- !u!1 &1817236226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,12 +1705,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035740138}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 140, y: 1.923, z: -275}
+  m_LocalPosition: {x: 140, y: 1.923, z: -264.5}
   m_LocalScale: {x: 1, y: 3.8659, z: 14.159127}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339355618}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2035740140
 MonoBehaviour:
@@ -1596,6 +1724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e6f834c0304941b1a2b1b6e249c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "gravit\xE0Curva": 90
+  applyFreno: 1
 --- !u!65 &2035740141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19759,6 +19889,7 @@ GameObject:
   - component: {fileID: 2753548986879394234}
   - component: {fileID: 2753548986879394232}
   - component: {fileID: 2753548986879394235}
+  - component: {fileID: 2753548986879394236}
   m_Layer: 8
   m_Name: VPP Sport Coupe
   m_TagString: Player
@@ -19782,7 +19913,7 @@ MonoBehaviour:
   showSuspensionAs: 0
   loadUnits: 0
   tireData: 0
-  enableHotKey: 0
+  enableHotKey: 1
   hotKey: 98
   screenPosition: {x: 80, y: 8}
   font: {fileID: 12800000, guid: 68e91a955efe04085922337eb01d7626, type: 3}
@@ -20228,6 +20359,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28294256, y: 0.43789858, z: 0.5214713}
   m_Center: {x: -0.35852817, y: 0.28104383, z: -0.23927782}
+--- !u!114 &2753548986879394236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753548986879394226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5484838a306a5984ab1b871a324f9b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2753548986879394224}
+  rbPlayer: {fileID: 2753548986879394225}
+  InCurva: 0
+  i: 0
 --- !u!64 &2753548986957746460
 MeshCollider:
   m_ObjectHideFlags: 0
