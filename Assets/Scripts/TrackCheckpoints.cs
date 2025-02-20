@@ -6,43 +6,38 @@ using UnityEngine;
 
 public class TrackCheckpoints : MonoBehaviour
 {
-
-    public RecordData record;
-
+    public TelemetryRecorder telemetryRecorder; // Riferimento da assegnare nell'Inspector
     public M2MqttUnityTest mqtt;
     private string message;
 
-    
     private void Awake()
     {
-        
+        if (telemetryRecorder == null)
+        {
+            Debug.LogError("TelemetryRecorder non assegnato in TrackCheckpoints! Assegna il riferimento nell'Inspector.");
+        }
+
         Transform checkpointsTransform = transform.Find("Checkpoints");
-        foreach(Transform checkpointSingleTransform  in checkpointsTransform)
+        foreach (Transform checkpointSingleTransform in checkpointsTransform)
         {
             CheckpointSingle checkpointSingle = checkpointSingleTransform.GetComponent<CheckpointSingle>();
             checkpointSingle.SetTrackCheckpoints(this);
         }
-
-        
     }
 
     public string PlayerThroughCheckpoint(CheckpointSingle checkpointSingle)
     {
-
+        // Componi il messaggio per la pubblicazione MQTT
         message = checkpointSingle.transform.name + "," + checkpointSingle.gravit‡Curva + "," + checkpointSingle.applyFreno;
-
         mqtt.TestPublish(message);
-        if (checkpointSingle.transform.name == "Curva1 ENTRY") 
+
+        // Reset del timer al checkpoint Start/Finish
+        if (checkpointSingle.transform.name == "Start/Finish" && telemetryRecorder != null)
         {
-            record.InCurva = true;
-            record.WriteCSV(record.InCurva);
+            //Debug.Log("Turco gay EZZY");
+            telemetryRecorder.ResetTimer();
         }
-        else if(checkpointSingle.transform.name == "Curva1 EXIT")
-        {
-            record.InCurva = false;
-        }
+
         return checkpointSingle.transform.name;
     }
-
-    
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CheckpointSingle : MonoBehaviour
 {
-
     public string gravit‡Curva;
     public bool applyFreno;
 
     private TrackCheckpoints trackCheckpoints;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             trackCheckpoints.PlayerThroughCheckpoint(this);
         }
@@ -21,5 +21,4 @@ public class CheckpointSingle : MonoBehaviour
     {
         this.trackCheckpoints = trackCheckpoints;
     }
-
 }
