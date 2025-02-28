@@ -28,7 +28,7 @@ public class TrackCheckpoints : MonoBehaviour
     public string PlayerThroughCheckpoint(CheckpointSingle checkpointSingle)
     {
         // Componi il messaggio per la pubblicazione MQTT
-        message = checkpointSingle.transform.name + "," + checkpointSingle.gravit‡Curva + "," + checkpointSingle.applyFreno;
+        message = checkpointSingle.gravit‡Curva;
         mqtt.TestPublish(message);
 
         // Reset del timer al checkpoint Start/Finish
