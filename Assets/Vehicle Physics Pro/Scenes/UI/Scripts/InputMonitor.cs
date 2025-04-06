@@ -18,6 +18,7 @@ public class InputMonitor : MonoBehaviour
 	{
 	public VehicleBase vehicle;
 
+
 	// All these bars will be controlled via Image.fillAmount
 
 	public Image throttleBar;
@@ -41,12 +42,11 @@ public class InputMonitor : MonoBehaviour
 
 		int[] inputData = vehicle.data.Get(Channel.Input);
 		int[] vehicleData = vehicle.data.Get(Channel.Vehicle);
-
 		float throttleInput = inputData[InputData.Throttle] / 10000.0f;
-		float brakeInput = inputData[InputData.Brake] / 10000.0f;
-		float clutchInput = inputData[InputData.Clutch] / 10000.0f;
+        float brakeInput = inputData[InputData.Brake] / 10000.0f;
+        float clutchInput = inputData[InputData.Clutch] / 10000.0f;
 		float steerInput = inputData[InputData.Steer] / 10000.0f;
-		float handbrakeInput = inputData[InputData.Handbrake] / 10000.0f;
+        float handbrakeInput = inputData[InputData.Handbrake] / 10000.0f;
 
 		float engineLoad = vehicleData[VehicleData.EngineLoad] / 1000.0f;
 		float clutchLock = vehicleData[VehicleData.ClutchLock] / 1000.0f;
