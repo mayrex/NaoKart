@@ -9,6 +9,8 @@ public class TrackCheckpoints : MonoBehaviour
     public TelemetryRecorder telemetryRecorder; // Riferimento da assegnare nell'Inspector
     public M2MqttUnityTest mqtt;
     private string message;
+    public DeltaTimeUI deltaTimeUI;
+
 
     public float BestLapTime { get; private set; } = Mathf.Infinity; //  you can GET the laptime value from outside the class. (because its public) private set means you only can set the value inside the class.
     public float LastLapTime { get; private set; } = 0;
@@ -51,6 +53,10 @@ public class TrackCheckpoints : MonoBehaviour
         {
             float bestSplit = bestLapSplits[currentLapSplits.Count - 1];
             float delta = currentSplit - bestSplit;
+            if (deltaTimeUI != null)
+            {
+                deltaTimeUI.UpdateDeltaBar(delta);
+            }
 
             string colore = delta < 0 ? "verde" : "rosso";
             Debug.Log($"{colore} Delta Time al checkpoint '{checkpointSingle.transform.name}': {delta:+0.00;-0.00} s");
@@ -76,7 +82,10 @@ public class TrackCheckpoints : MonoBehaviour
             {
                 Debug.Log("Giro completato. Tempo: " + LastLapTime.ToString("F2") + " secondi");
             }
-
+            if (deltaTimeUI != null)
+            {
+                deltaTimeUI.UpdateLapTimes(BestLapTime, LastLapTime);
+            }
             lapTimer = 0;
             telemetryRecorder.ResetTimer();
             CurrentLap++;
