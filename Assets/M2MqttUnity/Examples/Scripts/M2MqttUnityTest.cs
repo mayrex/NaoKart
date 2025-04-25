@@ -37,11 +37,14 @@ using System.Linq.Expressions;
 /// </summary>
 namespace M2MqttUnity.Examples
 {
+
+    
     /// <summary>
     /// Script for testing M2MQTT with a Unity UI
     /// </summary>
     public class M2MqttUnityTest : M2MqttUnityClient
     {
+       
         [Tooltip("Set this to true to perform a testing cycle automatically on startup")]
         public bool autoTest = false;
         [Header("User Interface")]
@@ -58,13 +61,17 @@ namespace M2MqttUnity.Examples
         private bool updateUI = false;
         
 
-        public void TestPublish(string message)
+        public void Checkpoint(string message)
         {
-            //TODO: PUSBLISHA IL TESTO CHECKPOINT
             client.Publish("checkpoint", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            Debug.Log(message +  "published");
-            AddUiMessage("Test message published.");
         }
+        
+        
+        public void AiMessage(string message)
+        {
+            client.Publish("AI", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        }
+
 
         public void SetBrokerAddress(string brokerAddress)
         {
@@ -119,7 +126,7 @@ namespace M2MqttUnity.Examples
 
             if (autoTest)
             {
-                TestPublish("Got connection");
+                Checkpoint("Got connection");
             }
         }
 

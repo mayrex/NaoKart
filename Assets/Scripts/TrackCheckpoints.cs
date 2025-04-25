@@ -9,7 +9,8 @@ public class TrackCheckpoints : MonoBehaviour
     public TelemetryRecorder telemetryRecorder; // Riferimento da assegnare nell'Inspector
     public M2MqttUnityTest mqtt;
     private string message;
-    public DeltaTimeUI deltaTimeUI;
+    private string AiMessage;
+
 
 
     public float BestLapTime { get; private set; } = Mathf.Infinity; //  you can GET the laptime value from outside the class. (because its public) private set means you only can set the value inside the class.
@@ -34,15 +35,15 @@ public class TrackCheckpoints : MonoBehaviour
         {
             CheckpointSingle checkpointSingle = checkpointSingleTransform.GetComponent<CheckpointSingle>();
             checkpointSingle.SetTrackCheckpoints(this);
+
         }
     }
 
     public string PlayerThroughCheckpoint(CheckpointSingle checkpointSingle)
     {
         // Componi il messaggio per la pubblicazione MQTT
-        // Componi il messaggio per la pubblicazione MQTT
         message = checkpointSingle.gravitàCurva;
-        mqtt.TestPublish(message);
+        mqtt.Checkpoint(message);
 
         // Tempo attuale al checkpoint
         float currentSplit = CurrentLapTime;
@@ -53,10 +54,6 @@ public class TrackCheckpoints : MonoBehaviour
         {
             float bestSplit = bestLapSplits[currentLapSplits.Count - 1];
             float delta = currentSplit - bestSplit;
-            if (deltaTimeUI != null)
-            {
-                deltaTimeUI.UpdateDeltaBar(delta);
-            }
 
             string colore = delta < 0 ? "verde" : "rosso";
             Debug.Log($"{colore} Delta Time al checkpoint '{checkpointSingle.transform.name}': {delta:+0.00;-0.00} s");
@@ -64,6 +61,12 @@ public class TrackCheckpoints : MonoBehaviour
         else
         {
             Debug.Log($"Checkpoint '{checkpointSingle.transform.name}' - Tempo: {currentSplit:F2} s");
+        }
+
+        // Aggiorna la curva corrente e la posizione ideale
+        if (telemetryRecorder != null)
+        {
+            telemetryRecorder.AggiornaCurva(checkpointSingle.gravitàCurva, checkpointSingle.transform.position);
         }
 
         // Se è il traguardo
@@ -75,21 +78,20 @@ public class TrackCheckpoints : MonoBehaviour
             if (LastLapTime < BestLapTime)
             {
                 BestLapTime = LastLapTime;
-                bestLapSplits = new List<float>(currentLapSplits); // copia
+                bestLapSplits = new List<float>(currentLapSplits);
                 Debug.Log("Nuovo giro più veloce! Tempo: " + BestLapTime.ToString("F2") + " secondi");
             }
             else
             {
                 Debug.Log("Giro completato. Tempo: " + LastLapTime.ToString("F2") + " secondi");
             }
-            if (deltaTimeUI != null)
-            {
-                deltaTimeUI.UpdateLapTimes(BestLapTime, LastLapTime);
-            }
+
             lapTimer = 0;
             telemetryRecorder.ResetTimer();
             CurrentLap++;
-            currentLapSplits.Clear(); // reset per il prossimo giro
+            currentLapSplits.Clear();
+            AiMessage = "Miglior Giro: " + BestLapTime + "; Ultimo Giro: " + LastLapTime + "; Numero Giri: " + CurrentLap + ";";
+            mqtt.AiMessage(AiMessage);
         }
 
         return checkpointSingle.transform.name;
