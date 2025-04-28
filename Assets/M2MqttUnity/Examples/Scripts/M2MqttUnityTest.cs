@@ -72,6 +72,10 @@ namespace M2MqttUnity.Examples
             client.Publish("AI", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         }
 
+        public void Handshake(string message)
+        {
+            client.Publish("HandShake", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        }
 
         public void SetBrokerAddress(string brokerAddress)
         {
