@@ -9,9 +9,8 @@ public class TrackCheckpoints : MonoBehaviour
     public TelemetryRecorder telemetryRecorder; // Riferimento da assegnare nell'Inspector
     public M2MqttUnityTest mqtt;
     private string message;
+    private string lap;
     private string AiMessage;
-
-
 
     public float BestLapTime { get; private set; } = Mathf.Infinity; //  you can GET the laptime value from outside the class. (because its public) private set means you only can set the value inside the class.
     public float LastLapTime { get; private set; } = 0;
@@ -25,6 +24,7 @@ public class TrackCheckpoints : MonoBehaviour
 
     private void Awake()
     {
+        
         if (telemetryRecorder == null)
         {
             Debug.LogError("TelemetryRecorder non assegnato in TrackCheckpoints! Assegna il riferimento nell'Inspector.");
@@ -35,7 +35,6 @@ public class TrackCheckpoints : MonoBehaviour
         {
             CheckpointSingle checkpointSingle = checkpointSingleTransform.GetComponent<CheckpointSingle>();
             checkpointSingle.SetTrackCheckpoints(this);
-
         }
     }
 
@@ -72,8 +71,9 @@ public class TrackCheckpoints : MonoBehaviour
         // Se è il traguardo
         if (checkpointSingle.transform.name == "Start/Finish" && telemetryRecorder != null)
         {
-            LastLapTime = lapTimer;
 
+            LastLapTime = lapTimer;
+          
             // Se è il miglior tempo, salviamo anche i parziali
             if (LastLapTime < BestLapTime)
             {
@@ -92,9 +92,12 @@ public class TrackCheckpoints : MonoBehaviour
             currentLapSplits.Clear();
             AiMessage = "Miglior Giro: " + BestLapTime + "; Ultimo Giro: " + LastLapTime + "; Numero Giri: " + CurrentLap + ";";
             mqtt.AiMessage(AiMessage);
+            lap = "Il tuo ultimo giro è stato: " + LastLapTime;
+            mqtt.Checkpoint(lap);
         }
 
         return checkpointSingle.transform.name;
+     
     }
     private void Update()
     {

@@ -72,6 +72,11 @@ namespace M2MqttUnity.Examples
             client.Publish("AI", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         }
 
+        public void Uscita_Pista(string message)
+        {
+            client.Publish("Uscita_pista", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        }
+
         public void Handshake(string message)
         {
             client.Publish("HandShake", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
@@ -127,11 +132,14 @@ namespace M2MqttUnity.Examples
         {
             base.OnConnected();
             SetUiMessage("Connected to broker on " + brokerAddress + "\n");
+            Handshake("got connection");
 
             if (autoTest)
             {
                 Checkpoint("Got connection");
+               
             }
+
         }
 
         protected override void SubscribeTopics()

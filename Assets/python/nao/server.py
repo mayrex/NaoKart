@@ -1,7 +1,7 @@
 import socket
 import threading
 import paho.mqtt.client as mqtt
-import ai
+#import ai
 
 # Configurazione MQTT
 MQTT_BROKER = "broker.emqx.io"  # Cambia se usi un altro broker
@@ -9,7 +9,7 @@ MQTT_PORT = 1883
 MQTT_TOPIC = "checkpoint"
 
 # Configurazione server socket
-SERVER_HOST = "192.168.1.17"
+SERVER_HOST = "192.168.235.215"
 SERVER_PORT = 6969
 clients = []  # Lista dei client connessi
 
@@ -19,6 +19,8 @@ def on_connect(client, userdata, flags, rc):
         print("[MQTT] Connesso al broker!")
         client.subscribe(MQTT_TOPIC)
         client.subscribe("AI")
+        client.subscribe("HandShake")
+        client.subscribe("Uscita_pista")
     else:
         print(f"[MQTT] Errore di connessione, codice: {rc}")
 
@@ -28,9 +30,11 @@ def on_message(client, userdata, msg):
     topic = msg.topic
     formatted_message = f"{topic}|{message}"
     print(f"[MQTT] Ricevuto '{message}' su '{topic}', inoltro ai client...")
+    """
     if topic=="AI":
         print(f"[MQTT] Ricevuto '{message}' su '{topic}', inoltro ai client...")
         ai.run(message)
+    """
 
 
     # Invia il messaggio a tutti i client socket

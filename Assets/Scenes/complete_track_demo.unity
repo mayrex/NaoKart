@@ -11711,7 +11711,7 @@ GameObject:
   - component: {fileID: 9050262866261663557}
   m_Layer: 0
   m_Name: 1GRASS_2
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13766,7 +13766,7 @@ GameObject:
   - component: {fileID: 2663594295238927784}
   m_Layer: 0
   m_Name: 0GRASS2
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26594,7 +26594,7 @@ GameObject:
   - component: {fileID: 2366327669711116213}
   m_Layer: 0
   m_Name: 0GRASS
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27430,7 +27430,7 @@ GameObject:
   - component: {fileID: 2662303603319522216}
   m_Layer: 0
   m_Name: sand_outside
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28903,7 +28903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 218, y: -15}
+  m_AnchoredPosition: {x: 218, y: -15.0000305}
   m_SizeDelta: {x: 256, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!4 &4622273519515264740
@@ -31496,7 +31496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5135061860636667147
 Transform:
   m_ObjectHideFlags: 0
@@ -36590,7 +36590,7 @@ GameObject:
   - component: {fileID: 6531896647562747044}
   m_Layer: 0
   m_Name: 1GRAVEL
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39092,7 +39092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6207513534042836376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60717,11 +60717,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8207398431134637360}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.28294256, y: 0.43789858, z: 0.5214713}
-  m_Center: {x: -0.35852817, y: 0.28104383, z: -0.23927782}
+  m_Size: {x: 0.2829426, y: 1.1145763, z: 0.5214713}
+  m_Center: {x: -0.35852817, y: -0.057294995, z: -0.23927781}
 --- !u!114 &8207398431134637370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60749,6 +60749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d085b834b66d8b24d99e5daba44d75e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mqtt: {fileID: 6207513534042836372}
   curvaAttuale: None
 --- !u!114 &8207398431134637372
 MonoBehaviour:
@@ -64304,7 +64305,7 @@ GameObject:
   - component: {fileID: 209958816915899508}
   m_Layer: 0
   m_Name: 1GRASS
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

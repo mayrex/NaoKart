@@ -3,13 +3,16 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using VehiclePhysics;
+using M2MqttUnity.Examples;
 
 public class TelemetryRecorder : MonoBehaviour
 {
+    //public BoxCollider col;
     private List<string> records = new List<string>();
     private Rigidbody rb;
     private VehicleBase vehicle;
     private float lapTimer = 0f;
+    public M2MqttUnityTest mqtt;
     private Vector3 previousVelocity = Vector3.zero;
     // Nuovi campi
     public string curvaAttuale = "None";
@@ -27,6 +30,13 @@ public class TelemetryRecorder : MonoBehaviour
             Debug.LogWarning("VehicleBase non trovato su " + gameObject.name);
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Grass"))
+        {
+            mqtt.Uscita_Pista("uscita pista");
+        }
+    }
     void FixedUpdate()
     {
         lapTimer += Time.fixedDeltaTime;

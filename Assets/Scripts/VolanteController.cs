@@ -6,7 +6,6 @@ public class VolanteController : MonoBehaviour
 {
     public GameObject volante;         // Riferimento al GameObject del volante
     public float angoloMassimo = 450f;   // Angolo massimo di rotazione del volante
-
     public VPWheelCollider[] vpWheels;            // Se usi Vehicle Physics Pro
     public Transform[] vpWheelMeshes;        // Mesh 3D delle ruote VPP
     public Transform[] vpSuspMeshes;        // Mesh 3D delle ruote VPP
@@ -15,6 +14,7 @@ public class VolanteController : MonoBehaviour
     void Start()
     {
         // Salva la rotazione iniziale delle mesh
+        
         initialMeshRotations = new Vector3[vpWheelMeshes.Length];
         for (int i = 0; i < vpWheelMeshes.Length; i++)
         {
@@ -25,8 +25,9 @@ public class VolanteController : MonoBehaviour
     public void FixedUpdate()
     {
         TiresEffects();
-
+        
         SteeringWheel();
+      
     }
 
     
