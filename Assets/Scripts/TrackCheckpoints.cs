@@ -80,10 +80,15 @@ public class TrackCheckpoints : MonoBehaviour
                 BestLapTime = LastLapTime;
                 bestLapSplits = new List<float>(currentLapSplits);
                 Debug.Log("Nuovo giro più veloce! Tempo: " + BestLapTime.ToString("F2") + " secondi");
+                lap = "FUCSIA, GIRO VELOCE." + BestLapTime.ToString("F2") + " secondi";
+                mqtt.Best_giro(lap);
             }
             else
             {
-                Debug.Log("Giro completato. Tempo: " + LastLapTime.ToString("F2") + " secondi");
+                Debug.Log("Giro completato. Tempo: " + LastLapTime + " secondi");
+                lap = "Il tuo ultimo giro è stato di: " + LastLapTime + " secondi";
+                mqtt.Checkpoint(lap);
+
             }
 
             lapTimer = 0;
@@ -92,8 +97,9 @@ public class TrackCheckpoints : MonoBehaviour
             currentLapSplits.Clear();
             AiMessage = "Miglior Giro: " + BestLapTime + "; Ultimo Giro: " + LastLapTime + "; Numero Giri: " + CurrentLap + ";";
             mqtt.AiMessage(AiMessage);
-            lap = "Il tuo ultimo giro è stato: " + LastLapTime;
-            mqtt.Checkpoint(lap);
+
+
+            
         }
 
         return checkpointSingle.transform.name;

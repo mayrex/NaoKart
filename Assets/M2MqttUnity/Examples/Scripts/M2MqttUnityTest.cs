@@ -79,7 +79,12 @@ namespace M2MqttUnity.Examples
 
         public void Handshake(string message)
         {
-            client.Publish("HandShake", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            client.Publish("Handshake", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        }
+
+        public void Best_giro(string message)
+        {
+            client.Publish("Best_giro", System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         }
 
         public void SetBrokerAddress(string brokerAddress)
