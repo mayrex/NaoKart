@@ -17,6 +17,9 @@ public class TelemetryRecorder : MonoBehaviour
     // Nuovi campi
     public string curvaAttuale = "None";
     private Vector3 idealCheckpointPosition = Vector3.zero;
+    public ONNXInferenceController inferenceController;
+    public string feedbackText;
+    private bool isRunning = false;
 
     void Start()
     {
@@ -36,9 +39,49 @@ public class TelemetryRecorder : MonoBehaviour
         {
             mqtt.Uscita_Pista("uscita pista");
         }
+
+        if(other.CompareTag("Curva1"))
+        {
+            isRunning = true;
+        }
     }
+
     void FixedUpdate()
     {
+        if (isRunning)
+        {
+            float[] inputData = GetCurrentTelemetryInput();
+            float[] prediction = inferenceController.Predict(inputData);
+
+            if (prediction != null && prediction.Length == 3)
+            {
+                float predictedSteering = prediction[0];
+                float predictedThrottle = prediction[1];
+                float predictedBrake = prediction[2];
+
+                float actualSteering = GetInput(InputData.Steer);
+                float actualThrottle = GetInput(InputData.Throttle);
+                float actualBrake = GetInput(InputData.Brake);
+
+                string feedback = "";
+
+                if (Mathf.Abs(predictedSteering - actualSteering) > 0.1f)
+                    feedback += "Correggi lo sterzo. ";
+
+                if (Mathf.Abs(predictedThrottle - actualThrottle) > 0.1f)
+                    feedback += "Modifica l'accelerazione. ";
+
+                if (Mathf.Abs(predictedBrake - actualBrake) > 0.1f)
+                    feedback += "Regola la frenata. ";
+
+                if (string.IsNullOrEmpty(feedback))
+                    feedback = "Ottimo controllo nella curva!";
+
+                if (feedbackText != null)
+                    feedbackText = feedback;
+            }
+        }
+
         lapTimer += Time.fixedDeltaTime;
 
         float t = Time.time;
@@ -131,5 +174,32 @@ public class TelemetryRecorder : MonoBehaviour
         curvaAttuale = curva;
         idealCheckpointPosition = idealPos;
     }
+
+    public float[] GetCurrentTelemetryInput()
+    {
+        Vector3 pos = transform.position;
+        Vector3 vel = rb != null ? rb.velocity : Vector3.zero;
+        Vector3 acceleration = (vel - previousVelocity) / Time.fixedDeltaTime;
+        Vector3 localVelocity = vehicle.transform.InverseTransformDirection(vel);
+        Vector3 localAcceleration = vehicle.transform.InverseTransformDirection(acceleration);
+
+        float steering = GetInput(InputData.Steer);
+        float throttle = GetInput(InputData.Throttle);
+        float brake = GetInput(InputData.Brake);
+        Vector3 rotationEuler = transform.rotation.eulerAngles;
+        float distanceFromIdeal = (idealCheckpointPosition == Vector3.zero) ? 0f : Vector3.Distance(pos, idealCheckpointPosition);
+
+        return new float[]
+        {
+        Time.time,
+        pos.x, pos.y, pos.z,
+        vel.x, vel.y, vel.z,
+        localVelocity.x, localVelocity.y, localVelocity.z,
+        localAcceleration.z, localAcceleration.x, localAcceleration.y,  // accLat, accLong, accVert
+        rotationEuler.y, rotationEuler.x, rotationEuler.z,              // yaw, pitch, roll
+        distanceFromIdeal
+        };
+    }
+
 
 }
