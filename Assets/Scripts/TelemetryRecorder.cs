@@ -40,10 +40,11 @@ public class TelemetryRecorder : MonoBehaviour
             mqtt.Uscita_Pista("uscita pista");
         }
 
-        if(other.CompareTag("Curva1"))
+        /*if(other.CompareTag("Curva1"))
         {
             isRunning = true;
         }
+        */
     }
 
     void FixedUpdate()

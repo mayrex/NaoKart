@@ -3,14 +3,16 @@ using M2MqttUnity.Examples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TrackCheckpoints : MonoBehaviour
 {
     public TelemetryRecorder telemetryRecorder; // Riferimento da assegnare nell'Inspector
     public M2MqttUnityTest mqtt;
-    private string message;
+    [SerializeField] string message;
     private string lap;
     private string AiMessage;
+    public TextMeshProUGUI sottotitoli;
 
     public float BestLapTime { get; private set; } = Mathf.Infinity; //  you can GET the laptime value from outside the class. (because its public) private set means you only can set the value inside the class.
     public float LastLapTime { get; private set; } = 0;
@@ -42,6 +44,7 @@ public class TrackCheckpoints : MonoBehaviour
     {
         // Componi il messaggio per la pubblicazione MQTT
         message = checkpointSingle.gravit‡Curva;
+        sottotitoli.text = message;
         mqtt.Checkpoint(message);
 
         // Tempo attuale al checkpoint
