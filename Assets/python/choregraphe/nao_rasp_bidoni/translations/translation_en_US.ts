@@ -115,10 +115,15 @@
     <context>
         <name>behavior_1/behavior.xar:/Uscita_box/Animated Say</name>
         <message>
-            <location filename="behavior_1/behavior.xar" line="0"/>
             <source>Ciao sono NAO, Per oggi sarò il tuo ingegnere di pista! Ti aiuterò a migliorare passo dopo passo!</source>
             <comment>Text</comment>
-            <translation type="unfinished">Ciao sono NAO, Per oggi sarò il tuo ingegnere di pista! Ti aiuterò a migliorare passo dopo passo!</translation>
+            <translation type="obsolete">Ciao sono NAO, Per oggi sarò il tuo ingegnere di pista! Ti aiuterò a migliorare passo dopo passo!</translation>
+        </message>
+        <message>
+            <location filename="behavior_1/behavior.xar" line="0"/>
+            <source>Ciao, sono NAO. Nel gioco NAOgp, io ho il ruolo di essere il tuo ingegnere di pista. Adesso faremo un giro di prova per imparare la pista. Ti darò le indicazioni necessarie. Spingi!o!</source>
+            <comment>Text</comment>
+            <translation type="unfinished">Ciao, sono NAO. Nel gioco NAOgp, io ho il ruolo di essere il tuo ingegnere di pista. Adesso faremo un giro di prova per imparare la pista. Ti darò le indicazioni necessarie. Spingi!o!</translation>
         </message>
     </context>
     <context>

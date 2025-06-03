@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using VehiclePhysics;
 using M2MqttUnity.Examples;
+using TMPro;
+using UnityEngine.UI;
 
 public class TelemetryRecorder : MonoBehaviour
 {
@@ -14,12 +16,14 @@ public class TelemetryRecorder : MonoBehaviour
     private float lapTimer = 0f;
     public M2MqttUnityTest mqtt;
     private Vector3 previousVelocity = Vector3.zero;
-    // Nuovi campi
     public string curvaAttuale = "None";
     private Vector3 idealCheckpointPosition = Vector3.zero;
     public ONNXInferenceController inferenceController;
     public string feedbackText;
     private bool isRunning = false;
+  
+
+
 
     void Start()
     {
@@ -83,6 +87,8 @@ public class TelemetryRecorder : MonoBehaviour
             }
         }
 
+        
+            
         lapTimer += Time.fixedDeltaTime;
 
         float t = Time.time;
@@ -132,7 +138,8 @@ public class TelemetryRecorder : MonoBehaviour
 
     private static int lapCounter = 1;
 
-    private void WriteTelemetryToCSV()
+
+private void WriteTelemetryToCSV()
     {
         string fileName = $"Telemetry_Giro_{lapCounter:D3}.csv";
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
@@ -201,6 +208,6 @@ public class TelemetryRecorder : MonoBehaviour
         distanceFromIdeal
         };
     }
-
-
 }
+
+

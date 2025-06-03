@@ -42,11 +42,12 @@ public class VolanteController : MonoBehaviour
             meshRotation.y += vpWheels[i].steerAngle;
 
             // Facciamo ruotare la ruota mentre gira (X)
-            float rotationAmount = vpWheels[i].angularVelocity * Mathf.Rad2Deg * Time.deltaTime;
+            float rotationAmount = vpWheels[i].angularVelocity * Mathf.Rad2Deg * Time.deltaTime * 7;
             meshRotation.x += rotationAmount;
 
             // Applichiamo la nuova rotazione
             vpWheelMeshes[i].localEulerAngles = meshRotation;
+            
         }
     }
     private void SteeringWheel()
