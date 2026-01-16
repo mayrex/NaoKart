@@ -9,7 +9,7 @@ MQTT_PORT = 1883
 MQTT_TOPIC = "checkpoint"
 
 # Configurazione server socket
-SERVER_HOST = "192.168.235.215"
+SERVER_HOST = "192.168.56.1"
 SERVER_PORT = 6969
 clients = []  # Lista dei client connessi
 
